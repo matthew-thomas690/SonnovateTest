@@ -1,0 +1,66 @@
+﻿@model SonovateTest.Models.JobDetailsModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<form asp-action="GenerateTimesheet">
+    <h4>Candidate details</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName"  class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle"  class="form-control" />
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <h4>Job details</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Client" class="control-label"></label>
+                <input asp-for="Client" class="form-control" />
+                <span asp-validation-for="Client" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" type="date" placeholder="Start Date" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" type="date" placeholder="Start Date" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="TimeSheetFrequency" class="form-control">
+                    <option value="placeholder" selected disabled>TimeSheet Frequency</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                </select>
+                <span asp-validation-for="TimeSheetFrequency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Generate" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

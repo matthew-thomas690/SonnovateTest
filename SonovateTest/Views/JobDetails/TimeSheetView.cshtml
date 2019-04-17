@@ -1,0 +1,36 @@
+﻿@model SonovateTest.Models.TimeSheetModel
+
+@{
+    ViewData["Title"] = "TimeSheetView";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>@Model.FullName</h4>
+        <p>@Model.JobTitle</p>
+        <p>@Model.Client</p>
+    </div>
+</div>
+
+
+@foreach (var timesheet in Model.TimeSheets)
+{
+    <div class="row py-3">
+        <div class="col-md-4">
+            <h5>@timesheet.Title</h5>
+            <p>@timesheet.SubTitle</p>
+            <ul class="list-group">
+                @foreach (var d in timesheet.Dates)
+                {
+                    <li class="list-group-item">@d</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
